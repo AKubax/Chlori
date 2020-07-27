@@ -1,21 +1,17 @@
+import 'package:chlori/TheApp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primaryColor: Colors.white,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
+
+    home: TheApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
 
-      home: Container(),
-    );
-  }
-}
 
