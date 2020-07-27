@@ -60,12 +60,43 @@ class _HomePageViewState extends State<HomePageView> with TickerProviderStateMix
         )
       )),
 
-      body: SingleChildScrollView(child: Column(children: [
-        Text('T', style: TextStyle(fontSize: 200),),
-        Text('T', style: TextStyle(fontSize: 200),),
-        Text('T', style: TextStyle(fontSize: 200),),
-        Text('T', style: TextStyle(fontSize: 200),),
-      ])))
-
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child: SingleChildScrollView(child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          _daySummary(),
+        ]))
+      ),
+    )
   );
+
+  Widget _daySummary() => Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+      color: Colors.cyanAccent.withAlpha(24),
+    ),
+    margin: EdgeInsets.all(3),
+    padding: EdgeInsets.all(10),
+    child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      Stack(alignment: Alignment.center, children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 2,
+          height: MediaQuery.of(context).size.width / 2,
+          child: CircularProgressIndicator(value: 0.5)
+        ),
+        Column(children: [
+          Text('587', style: Theme.of(context).textTheme.headline2),
+          Text('kcal', style: Theme.of(context).textTheme.bodyText1),
+        ]),
+      ]),
+      Padding(padding: EdgeInsets.all(7.5)),
+      _macronutrientRow('Protein'),
+      _macronutrientRow('Fat'),
+      _macronutrientRow('Carbs'),
+    ],),
+  );
+
+  Widget _macronutrientRow(String name) => Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+    Text(name, style: Theme.of(context).textTheme.caption),
+    SizedBox(width: MediaQuery.of(context).size.width * 0.65, child: LinearProgressIndicator(value: 0.2)),
+  ]);
 }
