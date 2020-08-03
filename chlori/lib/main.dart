@@ -1,5 +1,5 @@
-import 'package:chlori/TheApp.dart';
 import 'package:flutter/material.dart';
+import 'Views/TheApp.dart';
 
 void main() {
   runApp(MaterialApp(
